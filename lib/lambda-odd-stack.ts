@@ -13,7 +13,7 @@ export class LambdaOddStack extends cdk.Stack {
   // Update Lambda Function Definition here
   /* TO BE UPDATED - START */
   lambda_src_folder = "../lambda/app-odd";
-  name = "FunctionOddName";
+  name = "FunctionOdd";
 
   private getLambdaFunction(
     scope: Construct,
@@ -29,7 +29,7 @@ export class LambdaOddStack extends cdk.Stack {
       environment: env_values,
     };
 
-    const f = new lambda_python.PythonFunction(scope, "LambdaFunction", props);
+    const f = new lambda_python.PythonFunction(scope, this.name, props);
     return f;
   }
   /* TO BE UPDATED - END */
