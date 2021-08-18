@@ -68,39 +68,39 @@ export class PipelineStack extends cdk.Stack {
     stageDev.addApplication(lambdaEvenStage);
     stageDev.addApplication(lambdaOddStage);
 
-    // Define step function
-    const taskAlpha = new tasks.LambdaInvoke(this, "LambdaAlpha", {
-      lambdaFunction: lambdaAlphaStage.lambdaFunction,
-      inputPath: "$.number",
-      outputPath: "$.Payload",
-    });
-    const taskEven = new tasks.LambdaInvoke(this, "LambdaEven", {
-      lambdaFunction: lambdaEvenStage.lambdaFunction,
-      inputPath: "$.result",
-      outputPath: "$.Payload",
-    });
-    const taskOdd = new tasks.LambdaInvoke(this, "LambdaOdd", {
-      lambdaFunction: lambdaOddStage.lambdaFunction,
-      inputPath: "$.result",
-      outputPath: "$.Payload",
-    });
+    // // Define step function
+    // const taskAlpha = new tasks.LambdaInvoke(this, "LambdaAlpha", {
+    //   lambdaFunction: lambdaAlphaStage.lambdaFunction,
+    //   inputPath: "$.number",
+    //   outputPath: "$.Payload",
+    // });
+    // const taskEven = new tasks.LambdaInvoke(this, "LambdaEven", {
+    //   lambdaFunction: lambdaEvenStage.lambdaFunction,
+    //   inputPath: "$.result",
+    //   outputPath: "$.Payload",
+    // });
+    // const taskOdd = new tasks.LambdaInvoke(this, "LambdaOdd", {
+    //   lambdaFunction: lambdaOddStage.lambdaFunction,
+    //   inputPath: "$.result",
+    //   outputPath: "$.Payload",
+    // });
 
-    const WAIT_SECONDS = 2;
-    const waitX = new sfn.Wait(this, "Wait X Seconds", {
-      time: sfn.WaitTime.duration(Duration.seconds(WAIT_SECONDS)),
-    });
+    // const WAIT_SECONDS = 2;
+    // const waitX = new sfn.Wait(this, "Wait X Seconds", {
+    //   time: sfn.WaitTime.duration(Duration.seconds(WAIT_SECONDS)),
+    // });
 
-    const definition = taskAlpha
-      .next(waitX)
-      .next(
-        new sfn.Choice(this, "Even or Odd?")
-          .when(sfn.Condition.numberEquals("$.result", 1), taskOdd)
-          .when(sfn.Condition.numberEquals("$.result", 0), taskEven)
-      );
+    // const definition = taskAlpha
+    //   .next(waitX)
+    //   .next(
+    //     new sfn.Choice(this, "Even or Odd?")
+    //       .when(sfn.Condition.numberEquals("$.result", 1), taskOdd)
+    //       .when(sfn.Condition.numberEquals("$.result", 0), taskEven)
+    //   );
 
-    const stateMachine = new sfn.StateMachine(this, "MyStateMachine", {
-      definition,
-      timeout: Duration.minutes(5),
-    });
+    // const stateMachine = new sfn.StateMachine(this, "MyStateMachine", {
+    //   definition,
+    //   timeout: Duration.minutes(5),
+    // });
   }
 }
