@@ -21,6 +21,7 @@ export class StateMachineStack extends cdk.Stack {
 
   constructor(scope: cdk.Construct, id: string, props?: StateMachineProps) {
     super(scope, id, props);
+    this.name = id;
 
     // Step Function
     const taskAlpha = new tasks.LambdaInvoke(this, "LambdaAlpha", {
