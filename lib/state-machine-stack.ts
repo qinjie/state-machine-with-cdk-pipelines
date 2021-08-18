@@ -17,7 +17,7 @@ interface StateMachineProps extends cdk.StackProps {
 
 export class StateMachineStack extends cdk.Stack {
   output: cdk.CfnOutput;
-  name = "StateMachine";
+  name: string;
 
   constructor(scope: cdk.Construct, id: string, props?: StateMachineProps) {
     super(scope, id, props);
@@ -57,7 +57,7 @@ export class StateMachineStack extends cdk.Stack {
       timeout: Duration.minutes(5),
     });
 
-    this.output = new cdk.CfnOutput(this, this.name, {
+    this.output = new cdk.CfnOutput(this, `${this.name}_FunctionName`, {
       value: stateMachine.stateMachineName,
     });
   }
