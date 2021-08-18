@@ -1,4 +1,5 @@
 def handler(event, context):
+    print(event)
     x = event['number']
     x = int(x)
     result = x % 2

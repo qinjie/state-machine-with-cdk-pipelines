@@ -1,9 +1,4 @@
 import * as cdk from "@aws-cdk/core";
-import * as lambda from "@aws-cdk/aws-lambda";
-import * as lambda_python from "@aws-cdk/aws-lambda-python";
-import * as path from "path";
-import * as dotenv from "dotenv";
-import { Construct } from "@aws-cdk/core";
 import { IFunction } from "@aws-cdk/aws-lambda";
 import * as sfn from "@aws-cdk/aws-stepfunctions";
 import * as tasks from "@aws-cdk/aws-stepfunctions-tasks";

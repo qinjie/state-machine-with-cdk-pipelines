@@ -18,7 +18,7 @@ export class StateMachineStage extends cdk.Stage {
     super(scope, id, props);
 
     // Lambda Alpha
-    const stackAlpha = new LambdaOddStack(this, "LambdaAlpha", {
+    const stackAlpha = new LambdaAlphaStack(this, "LambdaAlpha", {
       tags: {
         Application: "LambdaAlpha",
         Environment: id,
@@ -28,7 +28,7 @@ export class StateMachineStage extends cdk.Stage {
     this.outputAlpha = stackAlpha.output;
 
     // Lambda Even
-    const stackEven = new LambdaOddStack(this, "LambdaEven", {
+    const stackEven = new LambdaEvenStack(this, "LambdaEven", {
       tags: {
         Application: "LambdaEven",
         Environment: id,
