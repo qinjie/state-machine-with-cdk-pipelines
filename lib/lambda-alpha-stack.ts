@@ -13,7 +13,7 @@ export class LambdaAlphaStack extends cdk.Stack {
   // Update Lambda Function Definition here
   /* TO BE UPDATED - START */
   lambda_src_folder = "../lambda/app-alpha";
-  name = "FunctionAlpha";
+  name: string;
 
   private getLambdaFunction(
     scope: Construct,
@@ -52,8 +52,9 @@ export class LambdaAlphaStack extends cdk.Stack {
     super(scope, id, props);
 
     const env_values = this.loadEnv();
+    this.name = id;
     this.lambdaFunction = this.getLambdaFunction(this, env_values);
-    this.output = new cdk.CfnOutput(this, this.name, {
+    this.output = new cdk.CfnOutput(this, `${this.name}_FunctionName`, {
       value: this.lambdaFunction.functionName,
     });
   }
