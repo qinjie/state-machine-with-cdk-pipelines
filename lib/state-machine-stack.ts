@@ -26,12 +26,12 @@ export class StateMachineStack extends cdk.Stack {
     });
     const taskEven = new tasks.LambdaInvoke(this, "LambdaEven", {
       lambdaFunction: props!.lambdaEven,
-      inputPath: "$.result",
+      inputPath: "$.input",
       outputPath: "$.Payload",
     });
     const taskOdd = new tasks.LambdaInvoke(this, "LambdaOdd", {
       lambdaFunction: props!.lambdaOdd,
-      inputPath: "$.result",
+      inputPath: "$.input",
       outputPath: "$.Payload",
     });
 
