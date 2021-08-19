@@ -53,7 +53,7 @@ export class StateMachineStack extends cdk.Stack {
       timeout: Duration.minutes(5),
     });
 
-    this.output = new cdk.CfnOutput(this, `${this.name}_FunctionName`, {
+    this.output = new cdk.CfnOutput(this, `${this.name}_Name`, {
       value: stateMachine.stateMachineName,
     });
   }

@@ -12,7 +12,7 @@ export class LambdaEvenStack extends cdk.Stack {
 
   // Update Lambda Function Definition here
   /* TO BE UPDATED - START */
-  lambda_src_folder = "../lambda/app-even";
+  lambda_src_folder = "../src/lambda-even";
   name: string;
 
   private getLambdaFunction(

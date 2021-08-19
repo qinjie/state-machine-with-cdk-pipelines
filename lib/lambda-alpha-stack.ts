@@ -12,7 +12,7 @@ export class LambdaAlphaStack extends cdk.Stack {
 
   // Update Lambda Function Definition here
   /* TO BE UPDATED - START */
-  lambda_src_folder = "../lambda/app-alpha";
+  lambda_src_folder = "../src/lambda-alpha";
   name: string;
 
   private getLambdaFunction(
