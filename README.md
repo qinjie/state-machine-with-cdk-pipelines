@@ -113,22 +113,38 @@ src
 
 ## Test
 
+
+
 #### Update Project
 
 1. Update the `.env` file in project root folder accordingly.
 2. Commit project into repository in GitHub.
 
+
+
 #### Deploy Project
 1. Make sure Docker Desktop is running.
+
 2. Run `cdk deploy` to deploy the project. 
    * In AWS CodePipeline, make sure the new pipeline is created successfully. 
    * In AWS Lambda, there will be 3 lambda functions are created.
    * In AWS Step Functions, there will be a step function created.
-3. After successful deployment, there will be 4 stacks in AWS CloudFormation. 
+   
+3. Run `cdk list` to list all stacks deployed.
+   * After successful deployment, there will be 4 stacks in AWS CloudFormation. 
+   
+   ```
+   StateMachine
+   StateMachine/StateMachine/LambdaAlpha
+   StateMachine/StateMachine/LambdaEven
+   StateMachine/StateMachine/LambdaOdd
+   StateMachine/StateMachine/StateMachine
+   ```
+   
+   
 
 
-
-### Examine Deployment in AWS Console
+#### Test State Machine
 
 Use AWS Console, go to Step Function and check out the state machine created.
 
@@ -140,7 +156,15 @@ Start a new execution with following input:
 }
 ```
 
-The code will run as 
-
 <img src="https://raw.githubusercontent.com/qinjie/picgo-images/main/image-20210819143605198.png" alt="image-20210819143605198|" style="zoom:75%;" />
+
+#### Destroy Deployment
+
+After testing, tear down the deployment using CDK CLI.
+
+When there are multiple stacks in the deployment, we have to remove child-stacks before removing main stack. We can use `cdk destroy` command to remove multiple stacks.
+
+```
+cdk destroy StateMachine/StateMachine/LambdaAlpha StateMachine/StateMachine/LambdaEven StateMachine/StateMachine/LambdaOdd StateMachine/StateMachine/StateMachine StateMachine
+```
 
