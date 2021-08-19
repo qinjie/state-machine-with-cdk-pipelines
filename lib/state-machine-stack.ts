@@ -21,17 +21,17 @@ export class StateMachineStack extends cdk.Stack {
     // Step Function
     const taskAlpha = new tasks.LambdaInvoke(this, "LambdaAlpha", {
       lambdaFunction: props!.lambdaAlpha,
-      inputPath: "$.input",
+      inputPath: "$",
       outputPath: "$.Payload",
     });
     const taskEven = new tasks.LambdaInvoke(this, "LambdaEven", {
       lambdaFunction: props!.lambdaEven,
-      inputPath: "$.input",
+      inputPath: "$",
       outputPath: "$.Payload",
     });
     const taskOdd = new tasks.LambdaInvoke(this, "LambdaOdd", {
       lambdaFunction: props!.lambdaOdd,
-      inputPath: "$.input",
+      inputPath: "$",
       outputPath: "$.Payload",
     });
 
